@@ -6,21 +6,17 @@
 
 // @lc code=start
 func convertToTitle(columnNumber int) string {
-	s := []byte{}
-
+	var s = make([]byte, 0)
 	for columnNumber > 0 {
+		columnNumber--
 		tmp := columnNumber % 26
-		if tmp == 0 {
-			tmp = 26
-		}
-		columnNumber = columnNumber / 26
-		s = append(s, byte('A'+tmp-1))
+		columnNumber /= 26
+		s = append(s, 'A'+byte(tmp))
 	}
-
-	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-		s[i], s[j] = s[j], s[i]
+	n := len(s)
+	for i := 0; i < n/2; i++ {
+		s[i], s[n-i-1] = s[n-i-1], s[i]
 	}
-
 	return string(s)
 }
 
