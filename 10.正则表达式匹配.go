@@ -6,6 +6,7 @@
 
 // @lc code=start
 func isMatch(s string, p string) bool {
+	m, n := len(s), len(p)
 }
 
 // @lc code=end
